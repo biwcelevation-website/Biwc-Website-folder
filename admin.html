@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#102653">
+  <title>Admin Dashboard | Baptist International Worship Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="supabase-config.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="admin-brand" href="index.html">
+        <img src="assets/biwc-logo.png" alt="">
+        <span><strong>BIWC</strong><small>ADMIN</small></span>
+      </a>
+      <div class="admin-header-actions">
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+          title="Switch to dark mode"
+        >
+          <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
+              d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42
+                M2 12h2m16 0h2M4.93 19.07l-1.42-1.42m11.3-11.3 1.42-1.42"
+            ></path>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+            <path d="M20.2 15.1A8.6 8.6 0 0 1 8.9 3.8 8.7 8.7 0 1 0 20.2 15.1Z"></path>
+          </svg>
+        </button>
+        <a class="button button-outline admin-home-link" href="index.html">View website</a>
+      </div>
+    </header>
+
+    <section class="admin-panel" id="admin-login-panel" aria-labelledby="login-title">
+      <p class="eyebrow eyebrow-dark">BIWC ADMINISTRATION</p>
+      <h1 id="login-title">Sign in to your dashboard</h1>
+      <p>Sign in with the administrator credentials provided to you.</p>
+      <form class="admin-login-form" id="admin-login-form">
+        <label for="admin-email">Email address</label>
+        <input id="admin-email" name="email" type="email" autocomplete="username" required>
+        <label for="admin-password">Password</label>
+        <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button button-dark" id="admin-login-button" type="submit">Sign in</button>
+        <p class="admin-status" id="login-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel admin-dashboard" id="admin-dashboard" hidden aria-labelledby="dashboard-title">
+      <div class="admin-dashboard-heading">
+        <div>
+          <p class="eyebrow eyebrow-dark">BIWC ADMINISTRATION</p>
+          <h1 id="dashboard-title">Submissions</h1>
+          <p>Latest contact messages, prayer requests, and newsletter subscriptions.</p>
+        </div>
+        <div class="admin-actions">
+          <button class="button button-outline" id="refresh-submissions" type="button">Refresh</button>
+          <button class="button button-dark" id="admin-sign-out" type="button">Sign out</button>
+        </div>
+      </div>
+
+      <div class="admin-tabs" role="group" aria-label="Submission type">
+        <button class="admin-tab" type="button" data-view="contact" aria-pressed="true">Contact</button>
+        <button class="admin-tab" type="button" data-view="prayer" aria-pressed="false">Prayer requests</button>
+        <button class="admin-tab" type="button" data-view="newsletter" aria-pressed="false">Newsletter</button>
+      </div>
+
+      <p class="admin-status" id="dashboard-status" role="status" aria-live="polite"></p>
+      <div class="admin-record-list" id="submission-list" aria-live="polite"></div>
+      <p class="admin-privacy-note">
+        Prayer requests may contain sensitive personal information. Share them only with the authorized prayer team.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
